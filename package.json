@@ -1,0 +1,11 @@
+{
+  "name": "cs2-case-opening-simulator",
+  "version": "1.0.0",
+  "description": "A Counter-Strike 2 case opening simulator",
+  "scripts": {
+    "build:css": "npx tailwindcss -i ./input.css -o ./styles.css --minify"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}

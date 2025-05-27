@@ -1,8 +1,336 @@
-/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-html{line-height:115;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}
+
+html {
+    line-height: 115;
+    -webkit-text-size-adjust: 100%
+}
+
+body {
+    margin: 0
+}
+
+main {
+    display: block
+}
+
+h1 {
+    font-size: 2em;
+    margin: .67em 0
+}
 
 /* Tailwind CSS base styles */
-*,::before,::after{box-sizing:border-box}html{font-family:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";line-height:1.5}
+*,
+::before,
+::after {
+    box-sizing: border-box
+}
+
+html {
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    line-height: 1.5
+}
 
 /* Tailwind utility classes used in the project */
-.bg-gray-900{background-color:#111827}.text-white{color:#fff}.font-sans{font-family:ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"}.container{width:100%;padding-right:1rem;padding-left:1rem;margin-right:auto;margin-left:auto}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}.p-4{padding:1rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.font-bold{font-weight:700}.text-center{text-align:center}.mb-8{margin-bottom:2rem}.grid{display:grid}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.gap-4{gap:1rem}.bg-gray-800{background-color:#1f2937}.rounded-lg{border-radius:.5rem}.cursor-pointer{cursor:pointer}.hover\:bg-gray-700:hover{background-color:#374151}.text-2xl{font-size:1.5rem;line-height:2rem}.font-semibold{font-weight:600}.hidden{display:none}.mt-8{margin-top:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.bg-blue-600{background-color:#2563eb}.hover\:bg-blue-700:hover{background-color:#1d4ed8}.py-2{padding-top:.5rem;padding-bottom:.5rem}.px-4{padding-left:1rem;padding-right:1rem}.rounded{border-radius:.25rem}.bg-gray-600{background-color:#4b5563}.hover\:bg-gray-700:hover{background-color:#374151}.ml-4{margin-left:1rem}.mx-auto{margin-left:auto;margin-right:auto}.mb-4{margin-bottom:1rem}@media (min-width:768px){.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.bg-gray-900 {
+    background-color: #111827
+}
+
+.text-white {
+    color: #fff
+}
+
+.font-sans {
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+}
+
+.container {
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: rgba(0, 0, 0, 0.863);
+    border-radius: 0.5rem;
+}
+
+@media (min-width:640px) {
+    .container {
+        max-width: 640px
+    }
+}
+
+@media (min-width:768px) {
+    .container {
+        max-width: 768px
+    }
+}
+
+@media (min-width:1024px) {
+    .container {
+        max-width: 1024px
+    }
+}
+
+@media (min-width:1280px) {
+    .container {
+        max-width: 1280px
+    }
+}
+
+.p-4 {
+    padding: 1rem
+}
+
+.text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem
+}
+
+.font-bold {
+    font-weight: 700
+}
+
+.text-center {
+    text-align: center
+}
+
+.mb-8 {
+    margin-bottom: 2rem
+}
+
+.grid {
+    display: grid
+}
+
+.grid-cols-1 {
+    grid-template-columns: repeat(5, minmax(0, 1fr))
+}
+
+.gap-4 {
+    gap: 1rem
+}
+
+.bg-gray-800 {
+    background-color: #000000ce
+}
+
+.rounded-lg {
+    border-radius: .5rem
+}
+
+.cursor-pointer {
+    cursor: pointer
+}
+
+.hover\:bg-gray-700:hover {
+    background-color: #374151
+}
+
+.text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem
+}
+
+.font-semibold {
+    font-weight: 600
+}
+
+.hidden {
+    display: none
+}
+
+.mt-8 {
+    margin-top: 2rem
+}
+
+.text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem
+}
+
+.bg-blue-600 {
+    background-color: #2563eb
+}
+
+.hover\:bg-blue-700:hover {
+    background-color: #1d4ed8
+}
+
+.py-2 {
+    padding-top: .5rem;
+    padding-bottom: .5rem
+}
+
+.px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem
+}
+
+.rounded {
+    border-radius: .25rem
+}
+
+.bg-gray-600 {
+    background-color: #4b5563
+}
+
+.hover\:bg-gray-700:hover {
+    background-color: #374151
+}
+
+.ml-4 {
+    margin-left: 1rem
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto
+}
+
+.mb-4 {
+    margin-bottom: 1rem
+}
+
+@media (min-width:768px) {
+    .md\:grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+}
+
+.result-container {
+    display: flex;
+    flex-direction: column;
+    /* Stack items vertically */
+    align-items: center;
+    /* Center items horizontally */
+    gap: 10px;
+    /* Space between text and image */
+    padding: 15px;
+
+    /* Subtle background */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow */
+    text-align: center;
+    /* Ensure text is centered */
+}
+
+#result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 150px;
+    /* Increased to accommodate vertical layout */
+    margin: 20px 0;
+}
+
+.item-scroll {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    width: 1200px;
+    height: 120px;
+    border: 2px solid #ffffff;
+    border-radius: 1em;
+    background: #1a1a1a;
+    margin: 0 auto;
+    transform-origin: center;
+}
+
+.result-container img {
+    max-width: 200px;
+    /* Limits maximum width */
+    max-height: 150px;
+    /* Limits maximum height */
+    object-fit: contain;
+    /* Preserves aspect ratio without stretching */
+}
+
+.item-scroll.scale-up {
+    animation: scaleUp 1s ease-out forwards;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.1);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.item-list {
+    display: flex;
+    transition: transform 5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.item {
+    width: 100px;
+    height: 100px;
+    margin: 10px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: inherit;
+
+}
+
+.mil-spec {
+    background: #4b69ff;
+}
+
+/* Mil-Spec Grade Blue */
+.restricted {
+    background: #8847ff;
+}
+
+/* Restricted Purple */
+.classified {
+    background: #d32ce6;
+}
+
+/* Classified Pink */
+.covert {
+    background: #eb4b4b;
+}
+
+/* Covert Red */
+.special {
+    background: #ffd700;
+}
+
+/* Special Item Gold */
+.pointer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: red;
+    z-index: 10;
+}
+
+.case-image {
+    width: 150px;
+    height: 150px;
+    object-fit: scale-down;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.rigged-slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}

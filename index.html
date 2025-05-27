@@ -5,306 +5,214 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CS2 Case Opening Simulator</title>
   <link href="styles.css" rel="stylesheet">
-  <style>
-    .result-container {
-  display: flex;
-  flex-direction: column; /* Stack items vertically */
-  align-items: center; /* Center items horizontally */
-  gap: 10px; /* Space between text and image */
-  padding: 15px; /* Slightly increased for better spacing */
-  background-color: rgba(0, 0, 0, 0.8); /* Subtle background */
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  text-align: center; /* Ensure text is centered */
-}
-#result {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-height: 150px; /* Increased to accommodate vertical layout */
-  margin: 20px 0;
-}
-    .item-scroll {
-      display: flex;
-      overflow: hidden;
-      position: relative;
-      width: 600px;
-      height: 120px;
-      border: 2px solid #ffffff;
-      background: #1a1a1a;
-      margin: 0 auto;
-      transform-origin: center;
-    }
-    .result-container img {
-  max-width: 200px; /* Limits maximum width */
-  max-height: 150px; /* Limits maximum height */
-  object-fit: contain; /* Preserves aspect ratio without stretching */
-}
-    .item-scroll.scale-up {
-      animation: scaleUp 1s ease-out forwards;
-    }
-    @keyframes scaleUp {
-      from { transform: scale(0.1); }
-      to { transform: scale(1); }
-    }
-    .item-list {
-      display: flex;
-      transition: transform 5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .item {
-      width: 100px;
-      height: 100px;
-      margin: 10px 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    .item img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      background: inherit;
-      
-    }
-    .mil-spec { background: #4b69ff; } /* Mil-Spec Grade Blue */
-    .restricted { background: #8847ff; } /* Restricted Purple */
-    .classified { background: #d32ce6; } /* Classified Pink */
-    .covert { background: #eb4b4b; } /* Covert Red */
-    .special { background: #ffd700; } /* Special Item Gold */
-    .pointer {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 2px;
-      background: red;
-      z-index: 10;
-    }
-    .case-image {
-      width: 150px;
-      height: 150px;
-      object-fit: scale-down;
-      margin-bottom: 1rem;
-      border-radius: 4px;
-    }
-    .rigged-slider-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1rem;
-    }
-  </style>
 </head>
-<body class="bg-gray-900 text-white font-sans">
+<body style="background-image: url('images/bg.png'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover ;"class="bg-gray-900 text-white font-sans">
   <div class="container mx-auto p-4">
     <h1 class="text-4xl font-bold text-center mb-8">CS2 Case Opening Simulator</h1>
     <div id="main-screen" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Fever')">
-        <img src="cases/Fever/Case.png" alt="Fever" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Fever/Case.png" alt="Fever" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Fever</h2>
-        <p id="case-desc">WORKING</p>
+        <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Gallery')">
-        <img src="cases/Gallery/Case.png" alt="Gallery" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Gallery/Case.png" alt="Gallery" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Gallery</h2>
-        <p id="case-desc">WORKING</p>
+        <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Kilowatt')">
-        <img src="cases/Kilowatt/Case.png" alt="Kilowatt" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Kilowatt/Case.png" alt="Kilowatt" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Kilowatt</h2>
-        <p id="case-desc">WORKING</p>
+        <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Revolution')">
-        <img src="cases/Revolution/Case.png" alt="Revolution" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Revolution/Case.png" alt="Revolution" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Revolution</h2>
-        <p id="case-desc">WORKING</p>
+        <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Recoil')">
-        <img src="cases/Recoil/Case.png" alt="Recoil" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Recoil/Case.png" alt="Recoil" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Recoil</h2>
-        <p id="case-desc">CASES PAST THIS POINT HAVE NOT BEEN CREATED!</p>
+        <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Dreams & Nightmares')">
-        <img src="cases/Dreams_&_Nightmares/Case.png" alt="Dreams & Nightmares" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Dreams_&_Nightmares/Case.png" alt="Dreams & Nightmares" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Dreams & Nightmares</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Operation Riptide')">
-        <img src="cases/Operation_Riptide/Case.png" alt="Operation Riptide" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Operation_Riptide/Case.png" alt="Operation Riptide" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Operation Riptide</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Snakebite')">
-        <img src="cases/Snakebite/Case.png" alt="Snakebite" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Snakebite/Case.png" alt="Snakebite" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Snakebite</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Operation Broken Fang')">
-        <img src="cases/Operation_Broken_Fang/Case.png" alt="Operation Broken Fang" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Operation_Broken_Fang/Case.png" alt="Operation Broken Fang" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Operation Broken Fang</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Fracture')">
-        <img src="cases/Fracture/Case.png" alt="Fracture" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Fracture/Case.png" alt="Fracture" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Fracture</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Prisma 2')">
-        <img src="cases/Prisma_2/Case.png" alt="Prisma 2" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Prisma_2/Case.png" alt="Prisma 2" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Prisma 2</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('CS20')">
-        <img src="cases/CS20/Case.png" alt="CS20" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/CS20/Case.png" alt="CS20" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">CS20</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Shattered Web')">
-        <img src="cases/Shattered_Web/Case.png" alt="Shattered Web" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Shattered_Web/Case.png" alt="Shattered Web" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Shattered Web</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Prisma')">
-        <img src="cases/Prisma/Case.png" alt="Prisma" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Prisma/Case.png" alt="Prisma" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Prisma</h2>
         <p id="case-desc"></p>
       </div>
+      <b>CASES BEYOND THIS POINT HAVE NOT BEEN UPDATED!</b>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Danger Zone')">
-        <img src="cases/Danger_Zone/Case.png" alt="Danger Zone" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Danger_Zone/Case.png" alt="Danger Zone" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Danger Zone</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Horizon')">
-        <img src="cases/Horizon/Case.png" alt="Horizon" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Horizon/Case.png" alt="Horizon" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Horizon</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Clutch')">
-        <img src="cases/Clutch/Case.png" alt="Clutch" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Clutch/Case.png" alt="Clutch" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Clutch</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Spectrum 2')">
-        <img src="cases/Spectrum_2/Case.png" alt="Spectrum 2" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Spectrum_2/Case.png" alt="Spectrum 2" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Spectrum 2</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Operation Hydra')">
-        <img src="cases/Operation_Hydra/Case.png" alt="Operation Hydra" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Operation_Hydra/Case.png" alt="Operation Hydra" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Operation Hydra</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Spectrum')">
-        <img src="cases/Spectrum/Case.png" alt="Spectrum" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Spectrum/Case.png" alt="Spectrum" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Spectrum</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Glove')">
-        <img src="cases/Glove/Case.png" alt="Glove" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Glove/Case.png" alt="Glove" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Glove</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Gamma 2')">
-        <img src="cases/Gamma_2/Case.png" alt="Gamma 2" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Gamma_2/Case.png" alt="Gamma 2" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Gamma 2</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Gamma')">
-        <img src="cases/Gamma/Case.png" alt="Gamma" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Gamma/Case.png" alt="Gamma" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Gamma</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Chroma 3')">
-        <img src="cases/Chroma_3/Case.png" alt="Chroma 3" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Chroma_3/Case.png" alt="Chroma 3" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Chroma 3</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Operation Wildfire')">
-        <img src="cases/Operation_Wildfire/Case.png" alt="Operation Wildfire" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Operation_Wildfire/Case.png" alt="Operation Wildfire" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Operation Wildfire</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Revolver')">
-        <img src="cases/Revolver/Case.png" alt="Revolver" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Revolver/Case.png" alt="Revolver" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Revolver</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Shadow')">
-        <img src="cases/Shadow/Case.png" alt="Shadow" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Shadow/Case.png" alt="Shadow" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Shadow</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Falchion')">
-        <img src="cases/Falchion/Case.png" alt="Falchion" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Falchion/Case.png" alt="Falchion" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Falchion</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Chroma 2')">
-        <img src="cases/Chroma_2/Case.png" alt="Chroma 2" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Chroma_2/Case.png" alt="Chroma 2" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Chroma 2</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Chroma')">
-        <img src="cases/Chroma/Case.png" alt="Chroma" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Chroma/Case.png" alt="Chroma" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Chroma</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Operation Vanguard')">
-        <img src="cases/Operation_Vanguard/Case.png" alt="Operation Vanguard" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Operation_Vanguard/Case.png" alt="Operation Vanguard" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Operation Vanguard</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('eSports 2014')">
-        <img src="cases/eSports_2014/Case.png" alt="eSports 2014" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/eSports_2014/Case.png" alt="eSports 2014" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">eSports 2014</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Operation Breakout')">
-        <img src="cases/Operation_Breakout/Case.png" alt="Operation Breakout" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Operation_Breakout/Case.png" alt="Operation Breakout" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Operation Breakout</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Huntsman')">
-        <img src="cases/Huntsman/Case.png" alt="Huntsman" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Huntsman/Case.png" alt="Huntsman" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Huntsman</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Operation Phoenix')">
-        <img src="cases/Operation_Phoenix/Case.png" alt="Operation Phoenix" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Operation_Phoenix/Case.png" alt="Operation Phoenix" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Operation Phoenix</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('CS:GO Weapon Case 3')">
-        <img src="cases/Weapon_Case_3/Case.png" alt="CS:GO Weapon Case 3" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Weapon_Case_3/Case.png" alt="CS:GO Weapon Case 3" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">CS:GO Weapon Case 3</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Winter Offensive')">
-        <img src="cases/Winter_Offensive/Case.png" alt="Winter Offensive" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Winter_Offensive/Case.png" alt="Winter Offensive" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Winter Offensive</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('eSports 2013')">
-        <img src="cases/eSports_2013/Case.png" alt="eSports 2013" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/eSports_2013/Case.png" alt="eSports 2013" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">eSports 2013</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('CS:GO Weapon Case 2')">
-        <img src="cases/Weapon_Case_2/Case.png" alt="CS:GO Weapon Case 2" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Weapon_Case_2/Case.png" alt="CS:GO Weapon Case 2" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">CS:GO Weapon Case 2</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('Operation Bravo')">
-        <img src="cases/Operation_Bravo/Case.png" alt="Operation Bravo" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Operation_Bravo/Case.png" alt="Operation Bravo" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">Operation Bravo</h2>
         <p id="case-desc"></p>
       </div>
       <div class="bg-gray-800 p-4 rounded-lg cursor-pointer hover:bg-gray-700 text-center" onclick="selectCase('CS:GO Weapon Case')">
-        <img src="cases/Weapon_Case/Case.png" alt="CS:GO Weapon Case" class="case-image mx-auto" onerror="this.src='placeholder.png'">
+        <img src="cases/Weapon_Case/Case.png" alt="CS:GO Weapon Case" class="case-image mx-auto" onerror="this.src=''">
         <h2 class="text-2xl font-semibold">CS:GO Weapon Case</h2>
         <p id="case-desc"></p>
       </div>
@@ -313,7 +221,7 @@
       <h2 id="case-title" class="text-3xl font-bold text-center mb-4"></h2>
       <div class="rigged-slider-container">
         <label for="rigged-slider">Rigged Multiplier: </label>
-        <input type="range" id="rigged-slider" min="1" max="1000" value="1" step="1">
+        <input type="range" id="rigged-slider" min="1" max="25" value="1" step="1">
         <span id="rigged-value">1x</span>
       </div>
       <div id="item-scroll" class="item-scroll">
@@ -412,263 +320,744 @@
         { name: 'Gloves | Vice', rarity: 'special', weight: 0.0026, image: 'cases/Revolution/Sport_Gloves_Vice.webp' }
       ],
       'Recoil': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'UMP-45 | Roadblock', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Recoil/UMP-45_Roadblock.webp' },
+        { name: 'Galil AR | Destroyer', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Recoil/Galil_AR_Destroyer.webp' },
+        { name: 'Negev | Drop Me', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Recoil/Negev_Drop_Me.webp' },
+        { name: 'MAC-10 | Monkeyflage', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Recoil/MAC-10_Monkeyflage.webp' },
+        { name: 'FAMAS | Meow 36', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Recoil/FAMAS_Meow_36.webp' },
+        { name: 'Glock-18 | Winterized', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Recoil/Glock-18_Winterized.webp' },
+        { name: 'M4A4 | Poly Mag', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Recoil/M4A4_Poly_Mag.webp' },
+        { name: 'M249 | Downtown', rarity: 'restricted', weight: 0.1598, image: 'cases/Recoil/M249_Downtown.webp' },
+        { name: 'P90 | Vent Rush', rarity: 'restricted', weight: 0.1598, image: 'cases/Recoil/P90_Vent_Rush.webp' },
+        { name: 'SG 553 | Dragon Tech', rarity: 'restricted', weight: 0.1598, image: 'cases/Recoil/SG_553_Dragon_Tech.webp' },
+        { name: 'Dual Berettas | Flora Carnivora', rarity: 'restricted', weight: 0.1598, image: 'cases/Recoil/Dual_Berettas_Flora_Carnivora.webp' },
+        { name: 'R8 Revolver | Crazy 8', rarity: 'restricted', weight: 0.1598, image: 'cases/Recoil/R8_Revolver_Crazy_8.webp' },
+        { name: 'P250 | Visions', rarity: 'classified', weight: 0.0320, image: 'cases/Recoil/P250_Visions.webp' },
+        { name: 'Sawed-Off | Kiss♥Love', rarity: 'classified', weight: 0.0320, image: 'cases/Recoil/Sawed-Off_Kiss♥Love.webp' },
+        { name: 'AK-47 | Ice Coaled', rarity: 'classified', weight: 0.0320, image: 'cases/Recoil/AK-47_Ice_Coaled.webp' },
+        { name: 'AWP | Chromatic Aberration', rarity: 'covert', weight: 0.0064, image: 'cases/Recoil/AWP_Chromatic_Aberration.webp' },
+        { name: 'USP-S | Printstream', rarity: 'covert', weight: 0.0064, image: 'cases/Recoil/USP-S_Printstream.webp' },
+        { name: 'Specialist Gloves | Marble Fade', rarity: 'special', weight: 0.0026, image: 'cases/Recoil/Specialist_Gloves_Marble_Fade.webp' }
       ],
       'Dreams & Nightmares': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'MAG-7 | Foresight', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Dreams_&_Nightmares/MAG-7_Foresight.webp' },
+        { name: 'SCAR-20 | Poultrygeist', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Dreams_&_Nightmares/SCAR-20_Poultrygeist.webp' },
+        { name: 'P2000 | Lifted Spirits', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Dreams_&_Nightmares/P2000_Lifted_Spirits.webp' },
+        { name: 'MP5-SD | Necro Jr.', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Dreams_&_Nightmares/MP5-SD_Necro_Jr-.webp' },
+        { name: 'Sawed-Off | Spirit Board', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Dreams_&_Nightmares/Sawed-Off_Spirit_Board.webp' },
+        { name: 'MAC-10 | Ensnared', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Dreams_&_Nightmares/MAC-10_Ensnared.webp' },
+        { name: 'Five-SeveN | Scrawl', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Dreams_&_Nightmares/Five-SeveN_Scrawl.webp' },
+        { name: 'XM1014 | Zombie Offensive', rarity: 'restricted', weight: 0.1598, image: 'cases/Dreams_&_Nightmares/XM1014_Zombie_Offensive.webp' },
+        { name: 'PP-Bizon | Space Cat', rarity: 'restricted', weight: 0.1598, image: 'cases/Dreams_&_Nightmares/PP-Bizon_Space_Cat.webp' },
+        { name: 'G3SG1 | Dream Glade', rarity: 'restricted', weight: 0.1598, image: 'cases/Dreams_&_Nightmares/G3SG1_Dream_Glade.webp' },
+        { name: 'USP-S | Ticket to Hell', rarity: 'restricted', weight: 0.1598, image: 'cases/Dreams_&_Nightmares/USP-S_Ticket_to_Hell.webp' },
+        { name: 'M4A1-S | Night Terror', rarity: 'restricted', weight: 0.1598, image: 'cases/Dreams_&_Nightmares/M4A1-S_Night_Terror.webp' },
+        { name: 'FAMAS | Rapid Eye Movement', rarity: 'classified', weight: 0.0320, image: 'cases/Dreams_&_Nightmares/FAMAS_Rapid_Eye_Movement.webp' },
+        { name: 'MP7 | Abyssal Apparition', rarity: 'classified', weight: 0.0320, image: 'cases/Dreams_&_Nightmares/MP7_Abyssal_Apparition.webp' },
+        { name: 'Dual Berettas | Melondrama', rarity: 'classified', weight: 0.0320, image: 'cases/Dreams_&_Nightmares/Dual_Berettas_Melondrama.webp' },
+        { name: 'MP9 | Starlight Protector', rarity: 'covert', weight: 0.0064, image: 'cases/Dreams_&_Nightmares/MP9_Starlight_Protector.webp' },
+        { name: 'AK-47 | Nightwish', rarity: 'covert', weight: 0.0064, image: 'cases/Dreams_&_Nightmares/AK-47_Nightwish.webp' },
+        { name: 'Falchion Knife | Lore', rarity: 'special', weight: 0.0026, image: 'cases/Dreams_&_Nightmares/Falchion_Knife_Lore.webp' }
       ],
       'Operation Riptide': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'G3SG1 | Keeping Tabs', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Operation_Riptide/G3SG1_Keeping_Tabs.webp' },
+        { name: 'MP7 | Guerrilla', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Operation_Riptide/MP7_Guerrilla.webp' },
+        { name: 'AUG | Plague', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Operation_Riptide/AUG_Plague.webp' },
+        { name: 'PP-Bizon | Lumen', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Operation_Riptide/PP-Bizon_Lumen.webp' },
+        { name: 'Dual Berettas | Tread', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Operation_Riptide/Dual_Berettas_Tread.webp' },
+        { name: 'XM1014 | Watchdog', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Operation_Riptide/XM1014_Watchdog.webp' },
+        { name: 'USP-S | Black Lotus', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Operation_Riptide/USP-S_Black_Lotus.webp' },
+        { name: 'MAG-7 | BI83 Spectrum', rarity: 'restricted', weight: 0.1598, image: 'cases/Operation_Riptide/MAG-7_BI83_Spectrum.webp' },
+        { name: 'Five-SeveN | Boost Protocol', rarity: 'restricted', weight: 0.1598, image: 'cases/Operation_Riptide/Five-SeveN_Boost_Protocol.webp' },
+        { name: 'FAMAS | ZX Spectron', rarity: 'restricted', weight: 0.1598, image: 'cases/Operation_Riptide/FAMAS_ZX_Spectron.webp' },
+        { name: 'MP9 | Mount Fuji', rarity: 'restricted', weight: 0.1598, image: 'cases/Operation_Riptide/MP9_Mount_Fuji.webp' },
+        { name: 'M4A4 | Spider Lily', rarity: 'restricted', weight: 0.1598, image: 'cases/Operation_Riptide/M4A4_Spider_Lily.webp' },
+        { name: 'MAC-10 | Toybox', rarity: 'classified', weight: 0.0320, image: 'cases/Operation_Riptide/MAC-10_Toybox.webp' },
+        { name: 'Glock-18 | Snack Attack', rarity: 'classified', weight: 0.0320, image: 'cases/Operation_Riptide/Glock-18_Snack_Attack.webp' },
+        { name: 'SSG 08 | Turbo Peek', rarity: 'classified', weight: 0.0320, image: 'cases/Operation_Riptide/SSG_08_Turbo_Peek.webp' },
+        { name: 'Desert Eagle | Ocean Drive', rarity: 'covert', weight: 0.0064, image: 'cases/Operation_Riptide/Desert_Eagle_Ocean_Drive.webp' },
+        { name: 'AK-47 | Leet Museo', rarity: 'covert', weight: 0.0064, image: 'cases/Operation_Riptide/AK-47_Leet_Museo.webp' },
+        { name: 'Bowie Knife | Black Laminate', rarity: 'special', weight: 0.0026, image: 'cases/Operation_Riptide/Bowie_Knife_Black_Laminate.webp' }
       ],
-      'Snakebite': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+'Snakebite': [
+    { name: 'UMP-45 | Oscillator', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Snakebite/UMP-45_Oscillator.webp' },
+    { name: 'SG 553 | Heavy Metal', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Snakebite/SG_553_Heavy_Metal.webp' },
+    { name: 'Nova | Windblown', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Snakebite/Nova_Windblown.webp' },
+    { name: 'M249 | O.S.I.P.R.', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Snakebite/M249_O-S-I-P-R-.webp' },
+    { name: 'R8 Revolver | Junk Yard', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Snakebite/R8_Revolver_Junk_Yard.webp' },
+    { name: 'CZ75-Auto | Circaetus', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Snakebite/CZ75-Auto_Circaetus.webp' },
+    { name: 'Glock-18 | Clear Polymer', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Snakebite/Glock-18_Clear_Polymer.webp' },
+    { name: 'MAC-10 | Button Masher', rarity: 'restricted', weight: 0.1598, image: 'cases/Snakebite/MAC-10_Button_Masher.webp' },
+    { name: 'Negev | dev_texture', rarity: 'restricted', weight: 0.1598, image: 'cases/Snakebite/Negev_dev_texture.webp' },
+    { name: 'P250 | Cyber Shell', rarity: 'restricted', weight: 0.1598, image: 'cases/Snakebite/P250_Cyber_Shell.webp' },
+    { name: 'Desert Eagle | Trigger Discipline', rarity: 'restricted', weight: 0.1598, image: 'cases/Snakebite/Desert_Eagle_Trigger_Discipline.webp' },
+    { name: 'AK-47 | Slate', rarity: 'restricted', weight: 0.1598, image: 'cases/Snakebite/AK-47_Slate.webp' },
+    { name: 'XM1014 | XOXO', rarity: ' Classified', weight: 0.0320, image: 'cases/Snakebite/XM1014_XOXO.webp' },
+    { name: 'MP9 | Food Chain', rarity: 'classified', weight: 0.0320, image: 'cases/Snakebite/MP9_Food_Chain.webp' },
+    { name: 'Galil AR | Chromatic Aberration', rarity: 'classified', weight: 0.0320, image: 'cases/Snakebite/Galil_AR_Chromatic_Aberration.webp' },
+    { name: 'M4A4 | In Living Color', rarity: 'covert', weight: 0.0064, image: 'cases/Snakebite/M4A4_In_Living_Color.webp' },
+    { name: 'USP-S | The Traitor', rarity: 'covert', weight: 0.0064, image: 'cases/Snakebite/USP-S_The_Traitor.webp' },
+    { name: 'Broken Fang Gloves | Needle Point', rarity: 'special', weight: 0.0026, image: 'cases/Snakebite/Broken_Fang_Gloves_Needle_Point.webp' }
+],
+'Operation Broken Fang': [
+    { name: 'P250 | Contaminant', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Operation_Broken_Fang/P250_Contaminant.webp' },
+    { name: 'P90 | Cocoa Rampage', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Operation_Broken_Fang/P90_Cocoa_Rampage.webp' },
+    { name: 'G3SG1 | Digital Mesh', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Operation_Broken_Fang/G3SG1_Digital_Mesh.webp' },
+    { name: 'MP5-SD | Condition Zero', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Operation_Broken_Fang/MP5-SD_Condition_Zero.webp' },
+    { name: 'CZ75-Auto | Vendetta', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Operation_Broken_Fang/CZ75-Auto_Vendetta.webp' },
+    { name: 'Galil AR | Vandal', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Operation_Broken_Fang/Galil_AR_Vandal.webp' },
+    { name: 'M249 | Deep Relief', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Operation_Broken_Fang/M249_Deep_Relief.webp' },
+    { name: 'UMP-45 | Gold Bismuth', rarity: 'restricted', weight: 0.1598, image: 'cases/Operation_Broken_Fang/UMP-45_Gold_Bismuth.webp' },
+    { name: 'Dual Berettas | Dezastre', rarity: 'restricted', weight: 0.1598, image: 'cases/Operation_Broken_Fang/Dual_Berettas_Dezastre.webp' },
+    { name: 'Nova | Clear Polymer', rarity: 'restricted', weight: 0.1598, image: 'cases/Operation_Broken_Fang/Nova_Clear_Polymer.webp' },
+    { name: 'SSG 08 | Parallax', rarity: 'restricted', weight: 0.1598, image: 'cases/Operation_Broken_Fang/SSG_08_Parallax.webp' },
+    { name: 'AWP | Exoskeleton', rarity: 'restricted', weight: 0.1598, image: 'cases/Operation_Broken_Fang/AWP_Exoskeleton.webp' },
+    { name: 'USP-S | Monster Mashup', rarity: 'classified', weight: 0.0320, image: 'cases/Operation_Broken_Fang/USP-S_Monster_Mashup.webp' },
+    { name: 'M4A4 | Cyber Security', rarity: 'classified', weight: 0.0320, image: 'cases/Operation_Broken_Fang/M4A4_Cyber_Security.webp' },
+    { name: 'Five-SeveN | Fairy Tale', rarity: 'classified', weight: 0.0320, image: 'cases/Operation_Broken_Fang/Five-SeveN_Fairy_Tale.webp' },
+    { name: 'Glock-18 | Neo-Noir', rarity: 'covert', weight: 0.0064, image: 'cases/Operation_Broken_Fang/Glock-18_Neo-Noir.webp' },
+    { name: 'M4A1-S | Printstream', rarity: 'covert', weight: 0.0064, image: 'cases/Operation_Broken_Fang/M4A1-S_Printstream.webp' },
+    { name: 'Specialist Gloves | Lt. Commander', rarity: 'special', weight: 0.0026, image: 'cases/Operation_Broken_Fang/Specialist_Gloves_Lt-Commander.webp' }
       ],
-      'Operation Broken Fang': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+'Fracture': [
+    { name: 'SG 553 | Ol Rusty', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Fracture/Ol_Rusty.webp' },
+    { name: 'Negev | Ultralight', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Fracture/Negev_Ultralight.webp' },
+    { name: 'P250 | Cassette', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Fracture/P250_Cassette.webp' },
+    { name: 'P90 | Freight', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Fracture/P90_Freight.webp' },
+    { name: 'P2000 | Gnarled', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Fracture/P2000_Gnarled.webp' },
+    { name: 'PP-Bizon | Runic', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Fracture/PP-Bizon_Runic.webp' },
+    { name: 'SSG 08 | Mainframe 001', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Fracture/SSG_08_Mainframe_001.webp' },
+    { name: 'MP5-SD | Kitbash', rarity: 'restricted', weight: 0.1598, image: 'cases/Fracture/MP5-SD_Kitbash.webp' },
+    { name: 'Galil AR | Connexion', rarity: 'restricted', weight: 0.1598, image: 'cases/Fracture/Galil_AR_Connexion.webp' },
+    { name: 'Tec-9 | Brother', rarity: 'restricted', weight: 0.1598, image: 'cases/Fracture/Tec-9_Brother.webp' },
+    { name: 'MAC-10 | Allure', rarity: 'restricted', weight: 0.1598, image: 'cases/Fracture/MAC-10_Allure.webp' },
+    { name: 'MAG-7 | Monster Call', rarity: 'restricted', weight: 0.1598, image: 'cases/Fracture/MAG-7_Monster_Call.webp' },
+    { name: 'XM1014 | Entombed', rarity: 'classified', weight: 0.0320, image: 'cases/Fracture/XM1014_Entombed.webp' },
+    { name: 'M4A4 | Tooth Fairy', rarity: 'classified', weight: 0.0320, image: 'cases/Fracture/M4A4_Tooth_Fairy.webp' },
+    { name: 'Glock-18 | Vogue', rarity: 'classified', weight: 0.0320, image: 'cases/Fracture/Glock-18_Vogue.webp' },
+    { name: 'AK-47 | Legion of Anubis', rarity: 'covert', weight: 0.0064, image: 'cases/Fracture/AK-47_Legion_of_Anubis.webp' },
+    { name: 'Desert Eagle | Printstream', rarity: 'covert', weight: 0.0064, image: 'cases/Fracture/Desert_Eagle_Printstream.webp' },
+    { name: 'Skeleton Knife | Fade', rarity: 'special', weight: 0.0026, image: 'cases/Fracture/Skeleton_Knife_Fade.webp'}
       ],
-      'Fracture': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
-      ],
-      'Prisma 2': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
-      ],
+'Prisma 2': [
+    { name: 'R8 Revolver | Bone Forged', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Prisma_2/R8_Revolver_Bone_Forged.webp' },
+    { name: 'CZ75-Auto | Distressed', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Prisma_2/CZ75-Auto_Distressed.webp' },
+    { name: 'MP5-SD | Desert Strike', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Prisma_2/MP5-SD_Desert_Strike.webp' },
+    { name: 'AUG | Tom Cat', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Prisma_2/AUG_Tom_Cat.webp' },
+    { name: 'Negev | Prototype', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Prisma_2/Negev_Prototype.webp' },
+    { name: 'Desert Eagle | Blue Ply', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Prisma_2/Desert_Eagle_Blue_Ply.webp' },
+    { name: 'AWP | Capillary', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Prisma_2/AWP_Capillary.webp' },
+    { name: 'SCAR-20 | Enforcer', rarity: 'restricted', weight: 0.1598, image: 'cases/Prisma_2/SCAR-20_Enforcer.webp' },
+    { name: 'Sawed-Off | Apocalypto', rarity: 'restricted', weight: 0.1598, image: 'cases/Prisma_2/Sawed-Off_Apocalypto.webp' },
+    { name: 'P2000 | Acid Etched', rarity: 'restricted', weight: 0.1598, image: 'cases/Prisma_2/P2000_Acid_Etched.webp' },
+    { name: 'SG 553 | Darkwing', rarity: 'restricted', weight: 0.1598, image: 'cases/Prisma_2/SG_553_Darkwing.webp' },
+    { name: 'SSG 08 | Fever Dream', rarity: 'restricted', weight: 0.1598, image: 'cases/Prisma_2/SSG_08_Fever_Dream.webp' },
+    { name: 'MAG-7 | Justice', rarity: 'classified', weight: 0.0320, image: 'cases/Prisma_2/MAG-7_Justice.webp' },
+    { name: 'MAC-10 | Disco Tech', rarity: 'classified', weight: 0.0320, image: 'cases/Prisma_2/MAC-10_Disco_Tech.webp' },
+    { name: 'AK-47 | Phantom Disruptor', rarity: 'classified', weight: 0.0320, image: 'cases/Prisma_2/AK-47_Phantom_Disruptor.webp' },
+    { name: 'Glock-18 | Bullet Queen', rarity: 'covert', weight: 0.0064, image: 'cases/Prisma_2/Glock-18_Bullet_Queen.webp' },
+    { name: 'M4A1-S | Player Two', rarity: 'covert', weight: 0.0064, image: 'cases/Prisma_2/M4A1-S_Player_Two.webp' },
+    { name: 'Stiletto Knife | Doppler', rarity: 'special', weight: 0.0026, image: 'cases/Prisma_2/Stiletto_Knife_Doppler.webp' }
+],
       'CS20': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+      { name: 'SCAR-20 | Assault', rarity: 'mil-spec', weight: 0.7992, image: 'cases/CS20/SCAR-20_Assault.webp' },
+    { name: 'MAG-7 | Popdog', rarity: 'mil-spec', weight: 0.7992, image: 'cases/CS20/MAG-7_Popdog.webp' },
+    { name: 'MAC-10 | Classic Crate', rarity: 'mil-spec', weight: 0.7992, image: 'cases/CS20/MAC-10_Classic_Crate.webp' },
+    { name: 'Dual Berettas | Elite 1.6', rarity: 'mil-spec', weight: 0.7992, image: 'cases/CS20/Dual_Berettas_Elite_1-6.webp' },
+    { name: 'Tec-9 | Flash Out', rarity: 'mil-spec', weight: 0.7992, image: 'cases/CS20/Tec-9_Flash_Out.webp' },
+    { name: 'FAMAS | Decommissioned', rarity: 'mil-spec', weight: 0.7992, image: 'cases/CS20/FAMAS_Decommissioned.webp' },
+    { name: 'Glock-18 | Sacrifice', rarity: 'mil-spec', weight: 0.7992, image: 'cases/CS20/Glock-18_Sacrifice.webp' },
+    { name: 'M249 | Aztec', rarity: 'restricted', weight: 0.1598, image: 'cases/CS20/M249_Aztec.webp' },
+    { name: 'UMP-45 | Plastique', rarity: 'restricted', weight: 0.1598, image: 'cases/CS20/UMP-45_Plastique.webp' },
+    { name: 'Five-SeveN | Buddy', rarity: 'restricted', weight: 0.1598, image: 'cases/CS20/Five-SeveN_Buddy.webp' },
+    { name: 'P250 | Inferno', rarity: 'restricted', weight: 0.1598, image: 'cases/CS20/P250_Inferno.webp' },
+    { name: 'MP5-SD | Agent', rarity: 'restricted', weight: 0.1598, image: 'cases/CS20/MP5-SD_Agent.webp' },
+    { name: 'P90 | Nostalgia', rarity: 'classified', weight: 0.0320, image: 'cases/CS20/P90_Nostalgia.webp' },
+    { name: 'AUG | Death by Puppy', rarity: 'classified', weight: 0.0320, image: 'cases/CS20/AUG_Death_by_Puppy.webp' },
+    { name: 'MP9 | Hydra', rarity: 'classified', weight: 0.0320, image: 'cases/CS20/MP9_Hydra.webp' },
+    { name: 'FAMAS | Commemoration', rarity: 'covert', weight: 0.0064, image: 'cases/CS20/FAMAS_Commemoration.webp' },
+    { name: 'AWP | Wildfire', rarity: 'covert', weight: 0.0064, image: 'cases/CS20/AWP_Wildfire.webp' },
+    { name: 'Classic Knife | Case Hardened', rarity: 'special', weight: 0.0026, image: 'cases/CS20/Classic_Knife_Case_Hardened.webp' }
       ],
       'Shattered Web': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+      { name: 'SCAR-20 | Torn', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Shattered_Web/SCAR-20_Torn.webp' },
+    { name: 'MP5-SD | Acid Wash', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Shattered_Web/MP5-SD_Acid_Wash.webp' },
+    { name: 'G3SG1 | Black Sand', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Shattered_Web/G3SG1_Black_Sand.webp' },
+    { name: 'M249 | Warbird', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Shattered_Web/M249_Warbird.webp' },
+    { name: 'R8 Revolver | Memento', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Shattered_Web/R8_Revolver_Memento.webp' },
+    { name: 'Nova | Plume', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Shattered_Web/Nova_Plume.webp' },
+    { name: 'Dual Berettas | Balance', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Shattered_Web/Dual_Berettas_Balance.webp' },
+    { name: 'MP7 | Neon Ply', rarity: 'restricted', weight: 0.1598, image: 'cases/Shattered_Web/MP7_Neon_Ply.webp' },
+    { name: 'PP-Bizon | Embargo', rarity: 'restricted', weight: 0.1598, image: 'cases/Shattered_Web/PP-Bizon_Embargo.webp' },
+    { name: 'AUG | Arctic Wolf', rarity: 'restricted', weight: 0.1598, image: 'cases/Shattered_Web/AUG_Arctic_Wolf.webp' },
+    { name: 'P2000 | Obsidian', rarity: 'restricted', weight: 0.1598, image: 'cases/Shattered_Web/P2000_Obsidian.webp' },
+    { name: 'AK-47 | Rat Rod', rarity: 'restricted', weight: 0.1598, image: 'cases/Shattered_Web/AK-47_Rat_Rod.webp' },
+    { name: 'SG 553 | Colony IV', rarity: 'classified', weight: 0.0320, image: 'cases/Shattered_Web/SG-553_Colony_IV.webp' },
+    { name: 'Tec-9 | Decimator', rarity: 'classified', weight: 0.0320, image: 'cases/Shattered_Web/Tec-9_Decimator.webp' },
+    { name: 'SSG 08 | Bloodshot', rarity: 'classified', weight: 0.0320, image: 'cases/Shattered_Web/SSG_08_Bloodshot.webp' },
+    { name: 'MAC-10 | Stalker', rarity: 'covert', weight: 0.0064, image: 'cases/Shattered_Web/MAC-10_Stalker.webp' },
+    { name: 'AWP | Containment Breach', rarity: 'covert', weight: 0.0064, image: 'cases/Shattered_Web/AWP_Containment_Breach.webp' },
+    { name: 'Nomad Knife | Slaughter', rarity: 'special', weight: 0.0026, image: 'cases/Shattered_Web/Nomad_Knife_Slaughter.webp' }
       ],
       'Prisma': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+      { name: 'MP7 | Mischief', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Prisma/MP7_Mischief.webp' },
+    { name: 'P250 | Verdigris', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Prisma/P250_Verdigris.webp' },
+    { name: 'FAMAS | Crypsis', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Prisma/FAMAS_Crypsis.webp' },
+    { name: 'Galil AR | Akoben', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Prisma/Galil_AR_Akoben.webp' },
+    { name: 'MAC-10 | Whitefish', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Prisma/MAC-10_Whitefish.webp' },
+    { name: 'P90 | Off World', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Prisma/P90_Off_World.webp' },
+    { name: 'AK-47 | Uncharted', rarity: 'mil-spec', weight: 0.7992, image: 'cases/Prisma/AK-47_Uncharted.webp' },
+    { name: 'MP5-SD | Gauss', rarity: 'restricted', weight: 0.1598, image: 'cases/Prisma/MP5-SD_Gauss.webp' },
+    { name: 'UMP-45 | Moonrise', rarity: 'restricted', weight: 0.1598, image: 'cases/Prisma/UMP-45_Moonrise.webp' },
+    { name: 'Tec-9 | Bamboozle', rarity: 'restricted', weight: 0.1598, image: 'cases/Prisma/Tec-9_Bamboozle.webp' },
+    { name: 'Desert Eagle | Light Rail', rarity: 'restricted', weight: 0.1598, image: 'cases/Prisma/Desert_Eagle_Light_Rail.webp' },
+    { name: 'AWP | Atheris', rarity: 'restricted', weight: 0.1598, image: 'cases/Prisma/AWP_Atheris.webp' },
+    { name: 'R8 Revolver | Skull Crusher', rarity: 'classified', weight: 0.0320, image: 'cases/Prisma/R8_Revolver_Skull_Crusher.webp' },
+    { name: 'XM1014 | Incinegator', rarity: 'classified', weight: 0.0320, image: 'cases/Prisma/XM1014_Incinegator.webp' },
+    { name: 'AUG | Momentum', rarity: 'classified', weight: 0.0320, image: 'cases/Prisma/AUG_Momentum.webp' },
+    { name: 'Five-SeveN | Angry Mob', rarity: 'covert', weight: 0.0064, image: 'cases/Prisma/Five-SeveN_Angry_Mob.webp' },
+    { name: 'M4A4 | The Emperor', rarity: 'covert', weight: 0.0064, image: 'cases/Prisma/M4A4_The_Emperor.webp' },
+    { name: 'Talon Knife | Doppler', rarity: 'special', weight: 0.0026, image: 'cases/Prisma/Talon_Knife_Doppler.webp' }
       ],
       'Danger Zone': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Horizon': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Clutch': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Spectrum 2': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Operation Hydra': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Spectrum': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Glove': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Gamma 2': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Gamma': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Chroma 3': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Operation Wildfire': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Revolver': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Shadow': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Falchion': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Chroma 2': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Chroma': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Operation Vanguard': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'eSports 2014': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Operation Breakout': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Huntsman': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Operation Phoenix': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'CS:GO Weapon Case 3': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Winter Offensive': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'eSports 2013': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'CS:GO Weapon Case 2': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'Operation Bravo': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ],
       'CS:GO Weapon Case': [
-        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: 'placeholder.png' },
-        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: 'placeholder.png' },
-        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: 'placeholder.png' },
-        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: 'placeholder.png' },
-        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: 'placeholder.png' }
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Mil-Spec', rarity: 'mil-spec', weight: 0.7992, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Restricted', rarity: 'restricted', weight: 0.1598, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Classified', rarity: 'classified', weight: 0.0320, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Covert', rarity: 'covert', weight: 0.0064, image: '' },
+        { name: 'Placeholder Special', rarity: 'special', weight: 0.0026, image: '' }
       ]
     };
     const rarityColors = {
@@ -751,8 +1140,10 @@ function getCondition(float) {
         let adjustedWeight = item.weight;
         if (['special', 'covert', 'classified'].includes(item.rarity)) {
           // Increase weight for rare items (logarithmic scaling to cap at 50x)
-          adjustedWeight *= (1 + Math.log1p((multiplier - 1) * 0.1) * 10); // Caps at ~25x boost
-        } else {
+          adjustedWeight *= (1 + Math.log1p((multiplier) * 0.1) * 10); // Caps at ~25x boost
+        } 
+        
+        else {
           // Decrease weight for common items (mil-spec, restricted)
           adjustedWeight /= (1 + Math.log1p((multiplier - 1) * 0.05) * 5); // Caps at ~7x reduction
         }
@@ -785,9 +1176,9 @@ function getCondition(float) {
         const div = document.createElement('div');
         div.className = `item ${item.rarity}`;
         const img = document.createElement('img');
-        img.src = item.image || 'placeholder.png';
+        img.src = item.image || '';
         img.alt = item.name;
-        img.onerror = () => { img.src = 'placeholder.png'; };
+        img.onerror = () => { img.src = ''; };
         div.appendChild(img);
         itemList.appendChild(div);
       });
@@ -815,9 +1206,9 @@ function getCondition(float) {
           const text2 = document.createElement('span2');
           // Create image element
           const img = document.createElement('img');
-          img.src = winningItem.image || 'placeholder.png';
+          img.src = winningItem.image || '';
           img.alt = winningItem.name;
-          img.onerror = () => { img.src = 'placeholder.png'; };
+          img.onerror = () => { img.src = ''; };
           
           // Append elements to container
           resultContainer.appendChild(text); // Text first
